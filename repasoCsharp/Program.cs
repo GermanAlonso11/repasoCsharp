@@ -14,16 +14,64 @@ namespace repasoCsharp
             //Console.WriteLine(bracketmatcher2(Console.ReadLine()));
             //Console.WriteLine(esfactorial(Convert.ToInt32(Console.ReadLine())));
 
-            int[] arregloOG = { 1, 2, 3, 4, 5 };
-            int[] arregloInvertido = reverseArray(arregloOG);
+            //int[] arregloOG = { 1, 2, 3, 4, 5 };
+            //int[] arregloInvertido = reverseArray(arregloOG);
 
-            for (int i = 0; i <= arregloInvertido.Length-1; i++)
+            //for (int i = 0; i <= arregloInvertido.Length-1; i++)
+            //{
+            //    Console.WriteLine(arregloInvertido[i]);
+            //}
+
+            //Console.WriteLine(FindIntersection(Console.ReadLine()));
+
+            int[] matrizNueva = {1, 2, 3, 4, 5 };
+
+            int[] resultado = matriz(matrizNueva, 3);
+
+            foreach (int n in resultado)
             {
-                Console.WriteLine(arregloInvertido[i]);
+                Console.WriteLine(n);
             }
 
-            Console.WriteLine(FindIntersection(Console.ReadLine()));
+        }
 
+        //Este es el bueno
+        public static int[] matriz(int[] matriz, int nuevoValor)
+        {
+            int[] matrizinvertida = new int[matriz.Length];
+
+            for (int i = 0, j = matriz.Length - 1; i <= matriz.Length - 1; i++, j--)
+            {
+                matrizinvertida[i] = matriz[j];
+            }
+
+            Array.Resize(ref matrizinvertida, matrizinvertida.Length + 1);
+
+            //Agregar el valor al final
+            matrizinvertida[matrizinvertida.Length - 1] = nuevoValor;
+
+            return matrizinvertida;
+
+        }
+
+        //Nuevo intento
+
+        public static int[] inversionNueva(int[] matriz, int nuevoValor)
+        {
+            
+            int[] matrizInvertida = new int[matriz.Length - 1];
+
+            for (int i = 0, j = matriz.Length-1; i < matriz.Length-1; i++, j--)
+            {
+                matrizInvertida[i] = matriz[j];
+            }
+
+            Array.Resize(ref matrizInvertida, matrizInvertida.Length + 1);
+
+            //Agregar el valor al final
+            matrizInvertida[matrizInvertida.Length - 1] = nuevoValor;
+
+            return matrizInvertida;
         }
 
         //BRACKET MATCHER
@@ -98,30 +146,24 @@ namespace repasoCsharp
                 return palindromo;
         }
 
-        //Palabra mas larga
+        //Palabra mas larga / Longest word
 
-        //public static string longerWord(string sen)
-        //{
-        //    // Dividir la cadena en palabras por espacios, ignorando entradas vacías
-        //    string[] words = sen.Split(' ', char()StringSplitOptions.RemoveEmptyEntries);
+        public static string longestWord(string sen)
+        {
 
-        //    // Limpiar cada palabra de caracteres no alfanuméricos (puntuación)
-        //    for (int i = 0; i < words.Length; i++)
-        //    {
-        //        words[i] = Regex.Replace(words[i], @"[^a-zA-Z0-9]", "");
-        //    }
+            //Agregar
+            //using System;
+            //using System.Text.RegularExpressions;
+            //using System.Linq;
 
-        //    // Encontrar la palabra más larga
-        //    string longest = "";
-        //    foreach (string word in words)
-        //    {
-        //        if (word.Length > longest.Length)
-        //        {
-        //            longest = word;
-        //        }
-        //    }
-        //    return longest;
-        //}
+            Regex rgx = new Regex(@"^\w\s");
+            sen = rgx.Replace(sen, "");
+            string[] words = sen.Split(' ');
+
+            return words.OrderByDescending(x => x.Length).First();
+        }
+
+        
 
         public static string revertirCadena(string palabra)
         {
@@ -214,6 +256,19 @@ namespace repasoCsharp
 
         }
 
+        ////Array inverso mas un agregado
+        //public static int[] arrayinverso(int[] value)
+        //{
+        //    int[] resultado;
+        //    for (int i = 0; i < value.Length; i++)
+        //    {
+                
+        //    }
+
+        //    Array.
+        //}
+        
+        
 
 
 

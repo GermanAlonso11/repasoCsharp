@@ -58,17 +58,17 @@ namespace repasoCsharp
 
         public static int[] inversionNueva(int[] matriz, int nuevoValor)
         {
-            
-            int[] matrizInvertida = new int[matriz.Length - 1];
 
-            for (int i = 0, j = matriz.Length-1; i < matriz.Length-1; i++, j--)
+            int[] matrizInvertida = new int[matriz.Length];
+
+            for (int i = 0, j= matriz.Length-1; i <= matriz.Length; i++, j--)
             {
                 matrizInvertida[i] = matriz[j];
+
             }
 
             Array.Resize(ref matrizInvertida, matrizInvertida.Length + 1);
 
-            //Agregar el valor al final
             matrizInvertida[matrizInvertida.Length - 1] = nuevoValor;
 
             return matrizInvertida;

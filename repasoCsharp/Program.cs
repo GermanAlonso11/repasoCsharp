@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace repasoCsharp
@@ -10,7 +11,18 @@ namespace repasoCsharp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(BracketMatcher(Console.ReadLine()));
+            //Console.WriteLine(bracketmatcher2(Console.ReadLine()));
+            //Console.WriteLine(esfactorial(Convert.ToInt32(Console.ReadLine())));
+
+            int[] arregloOG = { 1, 2, 3, 4, 5 };
+            int[] arregloInvertido = reverseArray(arregloOG);
+
+            for (int i = 0; i <= arregloInvertido.Length-1; i++)
+            {
+                Console.WriteLine(arregloInvertido[i]);
+            }
+
+            Console.WriteLine(FindIntersection(Console.ReadLine()));
 
         }
 
@@ -37,6 +49,7 @@ namespace repasoCsharp
             return contador == 0 ? "1" : "0";
         }
 
+        //Invertir cadena con arrays
         public static string invertirCadena(string valor)
         {
             char[] convertWord = valor.ToCharArray();
@@ -49,6 +62,7 @@ namespace repasoCsharp
 
         }
 
+        //Invertir cadena con bucles
         public static string invertString(string str)
         {
             string reversedword = "";
@@ -60,6 +74,146 @@ namespace repasoCsharp
 
             return reversedword;
         }
+
+        //Palindromo
+        public static string palindromo(string valor1)
+        {
+            string invertedWord = "";
+            string palindromo = "";
+
+            for (int i = valor1.Length - 1; i >= 0; i--)
+            {
+                invertedWord += valor1[i];
+            }
+
+            if(valor1 == invertedWord)
+            {
+                palindromo = "Es palindromo";
+            }
+            else
+            {
+                palindromo = "No lo es";
+            }
+
+                return palindromo;
+        }
+
+        //Palabra mas larga
+
+        //public static string longerWord(string sen)
+        //{
+        //    // Dividir la cadena en palabras por espacios, ignorando entradas vacías
+        //    string[] words = sen.Split(' ', char()StringSplitOptions.RemoveEmptyEntries);
+
+        //    // Limpiar cada palabra de caracteres no alfanuméricos (puntuación)
+        //    for (int i = 0; i < words.Length; i++)
+        //    {
+        //        words[i] = Regex.Replace(words[i], @"[^a-zA-Z0-9]", "");
+        //    }
+
+        //    // Encontrar la palabra más larga
+        //    string longest = "";
+        //    foreach (string word in words)
+        //    {
+        //        if (word.Length > longest.Length)
+        //        {
+        //            longest = word;
+        //        }
+        //    }
+        //    return longest;
+        //}
+
+        public static string revertirCadena(string palabra)
+        {
+            string palabraalrevez = "";
+
+            for (int i = palabra.Length - 1; i <= 0 ; i--)
+            {
+                palabraalrevez += palabra[i];
+            }
+
+            return palabraalrevez;
+        }
+
+        //Factorial
+        public static int factorial(int num)
+        {
+            
+            for (int i = num - 1; i > 0; i--)
+            {
+                num = num * i;
+            }
+
+            // code goes here  
+            return num;
+        }
+
+        public static string reverseando(string value)
+        {
+            string word = "";
+
+            for(int i = value.Length-1; i >= 0; i--)
+            {
+                word += value[i];
+            }
+
+            return word;
+        }
+
+        public static string bracketmatcher2(string value)
+        {
+            int contador = 0;
+
+            for (int i = 0; i <= value.Length-1; i++)
+            {
+                if (value[i]== '(')
+                {
+                    contador ++;
+                }else if (value[i] == ')')
+                {
+                    contador--;
+                }
+
+            }
+
+            return contador == 0 ? "1" : "0";
+
+
+        }
+
+        //Es factorial
+        public static int esfactorial(int num)
+        {
+            for (int i = num-1; i >= 1; i--) 
+            {
+                num *= i;
+            }
+
+            return num;
+        }
+
+        //Reversear array
+        public static int[] reverseArray(int[] value)
+        {
+            int[] result = new int[value.Length];
+
+            for (int i = 0; i < value.Length; i++)
+            {
+                result[i] = value[value.Length - 1 - i];
+            }
+
+            return value;
+        }
+
+        //Find Intersection
+        public static string FindIntersection(string[] strArr)
+        {
+            string resultString = string.Join(",", strArr[0].Split(',').Select(x => x.Trim()).Intersect(strArr[1].Split(',').Select(x => x.Trim())));
+
+            return string.IsNullOrEmpty(resultString) ? "false" : resultString;
+
+        }
+
 
 
 
